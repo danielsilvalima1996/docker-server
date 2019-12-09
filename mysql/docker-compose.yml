@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  mysql-server:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: "admin123!@#"
+      MYSQL_DATABASE: "controle_chamados"
+      MYSQL_USER: "admin"
+      MYSQL_PASSWORD: "admin123!@#"
+      TZ: America/Sao_Paulo
+    ports:
+      - "3306:3306"
+    container_name: mysql
+    restart: always
+    volumes:
+      - /home/docker/Desenvolvimento/Docker/Volumes/MySql:/var/lib/mysql
+    networks:
+      - mysql-compose-network
+
+  # adminer:
+  #   image: adminer
+  #   ports:
+  #     - 8008:8008
+  #   networks:
+  #     - mysql-compose-network
+
+networks: 
+  mysql-compose-network:
+    driver: bridge
+

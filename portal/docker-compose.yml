@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  projeto-controle-chamados:
+    image: dslima/projeto-controle-chamados:latest
+    ports:
+      - "80:80"
+    container_name: projeto-controle-chamados
+    restart: always
