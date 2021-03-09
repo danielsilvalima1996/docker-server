@@ -1,29 +1,31 @@
 version: '3'
 
 services:
-  teste-postgres-compose:
+  db-postgres:
     image: postgres
+    container_name: postgres_db
     environment:
-      POSTGRES_PASSWORD: "Postgres2019!"
+      POSTGRES_PASSWORD: "root"
     ports:
-      - "15432:5432"
+      - "5432:5432"
     volumes:
-      - /home/dlima/Desenvolvimento/Docker-Compose/PostgreSQL:/var/lib/postgresql/data 
+      - /home/daniel/Desenvolvimento/Docker/PostgreSQL:/var/lib/postgresql/data 
     networks:
-      - postgres-compose-network
+      - db-postgres-network
       
-  teste-pgadmin-compose:
+  pgadmin-compose:
     image: dpage/pgadmin4
+    container_name: postgres_pgadmin
     environment:
       PGADMIN_DEFAULT_EMAIL: "dsl15021996@gmail.com"
-      PGADMIN_DEFAULT_PASSWORD: "PgAdmin2019!"
+      PGADMIN_DEFAULT_PASSWORD: "root"
     ports:
       - "16543:80"
     depends_on:
-      - teste-postgres-compose
+      - db-postgres
     networks:
-      - postgres-compose-network
+      - db-postgres-network
 
 networks: 
-  postgres-compose-network:
+  db-postgres-network:
     driver: bridge
