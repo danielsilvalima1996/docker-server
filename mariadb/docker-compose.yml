@@ -6,7 +6,7 @@ services:
   db:
     container_name: mariadb
     image: mariadb
-    restart: always
+    # restart: always
     environment:
       MARIADB_ROOT_PASSWORD: rootpwd
     ports:
@@ -15,6 +15,6 @@ services:
   adminer:
     container_name: adminer-mariadb
     image: adminer
-    restart: always
+    # restart: always
     ports:
       - 8080:8080
