@@ -1,0 +1,27 @@
+version: '3.7'
+
+services:
+  oracle:
+    image: wnameless/oracle-xe-11g-r2
+    ports:
+      - "1521:1521"
+    environment:
+      - ORACLE_ALLOW_REMOTE=true
+    volumes:
+      - oracle_data:/u01/app/oracle
+    networks:
+      - oracle_network
+
+volumes:
+  oracle_data:
+
+networks:
+  oracle_network:
+    driver: bridge
+
+# https://hub.docker.com/r/wnameless/oracle-xe-11g-r2
+# hostname: localhost
+# port: 49161
+# sid: xe
+# username: system
+# password: oracle
